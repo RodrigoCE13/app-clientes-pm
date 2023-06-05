@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div clas="">
+    <div class="container">
+        <div class= "row">
+            <div class="col-md-12 search mt-5">
+                <form method="get">
+                    <div id="custom-search-input">
+                        <div class="input-group col-md-12">
+                            <input type="text" class="form-control" placeholder="buscar..." name="buscar"  >
+                            <span class="input-group-list">
+                                <i class="icon icon-search"></i>
+                                <button type="submit" class="btn btn-primary">buscar</button>                       
+                        </div>    
+                    </div>
+                </form>    
+            </div>    
+        </div>
+    </div>
+</div>
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center py-5">Lista de Usuarios</h1>
+
+            <ul class="list-group" >
+                {% for usuario in usuarios %}
+                <a class="list-group-item" href="{% url 'usuario_detail' usuario.id %}">         
+                    <header class="d-flex justify-content-between">
+                        {% if usuario.estado %}
+                            <h3 class="fw-bold">{{usuario.nombre}}</h3>
+                            <p>{{usuario.rol_user}}</p>
+                        {% else %}
+                            <h3 class="text-secondary" >{{usuario.nombre}}</h3>
+                            <p>{{usuario.rol_user}}</p>
+                        {% endif %}
+                    </header>
+                    <p>{{usuario.apellido}}</p>
+                </a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

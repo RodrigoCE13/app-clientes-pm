@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col mt-3">
+            <form action="/usuarios/create/" method="POST" class="form form-control">
+                <h1>Crear usuario</h1>
+
+                {{error}}
+                {% csrf_token %}
+                {{form.as_p}}
+
+                <button class="btn btn-primary">
+                    Crear usuario
+                </button>
+            
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -30,14 +30,12 @@
                 <a class="list-group-item" href="{% url 'usuario_detail' usuario.id %}">         
                     <header class="d-flex justify-content-between">
                         {% if usuario.estado %}
-                            <h3 class="fw-bold">{{usuario.nombre}}</h3>
-                            <p>{{usuario.rol_user}}</p>
+                            <h3 class="fw-bold">{{usuario.nombre}} {{usuario.apellido}}</h3>
                         {% else %}
-                            <h3 class="text-secondary" >{{usuario.nombre}}</h3>
-                            <p>{{usuario.rol_user}}</p>
+                            <h3 class="text-secondary" >{{usuario.nombre}} {{usuario.apellido}}</h3>
                         {% endif %}
                     </header>
-                    <p>{{usuario.apellido}}</p>
+                    <p>{{usuario.email}}</p>
                 </a>
                 {% endfor %}
             </ul>

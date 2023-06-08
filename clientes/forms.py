@@ -32,7 +32,8 @@ class ClienteForm(forms.ModelForm):
                 'representanteLegal','rutRepresentanteLegal','banco','tipoCuenta',
                 'numeroCuenta','claveSIIRepresentante','inicioActividades',
                 'regimenTributario','claveCertificadoDigital','vencimientoCertificadoDigital',
-                'usuarioPrevired','clavePrevired','otroServicio','estado']
+                'usuarioPrevired','clavePrevired','servicioContable','servicioRemuneraciones',
+                'ServicioPortalRRHH','otroServicio','estado']
         widgets={
             'rutEmpresa': forms.TextInput(attrs={'class':'form-control'}),
             'nombreDeFantasia': forms.TextInput(attrs={'class':'form-control'}),
@@ -57,6 +58,9 @@ class ClienteForm(forms.ModelForm):
             'vencimientoCertificadoDigital': forms.DateInput(attrs={'class':'form-control','type':'date'}),
             'usuarioPrevired': forms.TextInput(attrs={'class':'form-control'}),
             'clavePrevired': forms.TextInput(attrs={'class':'form-control'}),
+            'servicioContable': forms.CheckboxInput(attrs={'class':'form-check-input'}),
+            'servicioRemuneraciones': forms.NumberInput(attrs={'class':'form-control'}),
+            'ServicioPortalRRHH': forms.CheckboxInput(attrs={'class':'form-check-input'}),
             'otroServicio': forms.TextInput(attrs={'class':'form-control'}),
             'estado': forms.CheckboxInput(attrs={'class':'form-check-input'}),
         }

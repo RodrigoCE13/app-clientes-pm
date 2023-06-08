@@ -39,25 +39,46 @@ def create_clientes(request):
                 'form': ClienteForm,
                 'error': 'Error al crear cliente'
             })
+#@login_required
+##editar clientes
+#def cliente_detail(request, cliente_id):
+#    if request.method=='GET':
+#        cliente = get_object_or_404(Cliente, pk=cliente_id)
+#        form=ClienteForm(instance=cliente)
+#        return render(request, 'cliente-detail.html',{'cliente':cliente, 'form':form})
+#    else:
+#        try:
+#            cliente=get_object_or_404(Cliente, pk=cliente_id)
+#            form=ClienteForm(request.POST, instance=cliente)
+#            form.save()
+#            return redirect('clientes')
+#        except ValueError:
+#            return render(request, 'cliente-detail.html', {
+#                'cliente':cliente,
+#                'form':form,
+#                'error': 'Error al editar cliente'
+#            })
+
 @login_required
-#editar clientes
 def cliente_detail(request, cliente_id):
-    if request.method=='GET':
-        cliente = get_object_or_404(Cliente, pk=cliente_id)
-        form=ClienteForm(instance=cliente)
-        return render(request, 'cliente-detail.html',{'cliente':cliente, 'form':form})
-    else:
-        try:
-            cliente=get_object_or_404(Cliente, pk=cliente_id)
-            form=ClienteForm(request.POST, instance=cliente)
+    cliente = get_object_or_404(Cliente, pk=cliente_id)
+
+    if request.method == 'GET':
+        form = ClienteForm(instance=cliente)
+    elif request.method == 'POST':
+        form = ClienteForm(request.POST, instance=cliente)
+        if form.is_valid():
             form.save()
             return redirect('clientes')
-        except ValueError:
-            return render(request, 'cliente-detail.html', {
-                'cliente':cliente,
-                'form':form,
-                'error': 'Error al editar cliente'
-            })
+    else:
+        return render(request, 'cliente-detail.html', {
+            'cliente': cliente,
+            'form': form,
+            'error': 'Error al editar cliente'
+        })
+
+    return render(request, 'cliente-detail.html', {'cliente': cliente, 'form': form})
+
 
 @login_required
 #eliminar clientes

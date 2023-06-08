@@ -20,9 +20,9 @@ class ClienteForm(forms.ModelForm):
         ('vista', 'Cuenta Vista'),
         ('otro', 'Otro tipo de cuenta'),
     )
-    banco = forms.ChoiceField(choices=bancos, widget=forms.Select(attrs={'class': 'form-select'}))
-    tipoCuenta = forms.ChoiceField(choices=tiposCuenta, widget=forms.Select(attrs={'class': 'form-select'}))
-    regimenTributario = forms.ChoiceField(choices=regimens, widget=forms.Select(attrs={'class': 'form-select'}))
+    banco = forms.ChoiceField(choices=bancos, widget=forms.Select(attrs={'class': 'form-select','style': 'width: 300px'}))
+    tipoCuenta = forms.ChoiceField(choices=tiposCuenta, widget=forms.Select(attrs={'class': 'form-select','style': 'width: 300px'}))
+    regimenTributario = forms.ChoiceField(choices=regimens, widget=forms.Select(attrs={'class': 'form-select','style': 'width: 300px'}))
     
     class Meta:
         model=Cliente
@@ -34,29 +34,29 @@ class ClienteForm(forms.ModelForm):
                 'regimenTributario','claveCertificadoDigital','vencimientoCertificadoDigital',
                 'usuarioPrevired','clavePrevired','otroServicio','estado']
         widgets={
-            'rutEmpresa': forms.TextInput(attrs={'class':'form-control'}),
-            'nombreDeFantasia': forms.TextInput(attrs={'class':'form-control'}),
-            'razonSocial': forms.TextInput(attrs={'class':'form-control'}),
-            'fechaIngresoCliente': forms.DateInput(attrs={'class':'form-control','type':'date'}),
-            'claveSII': forms.TextInput(attrs={'class':'form-control'}),
-            'nombreContacto1': forms.TextInput(attrs={'class':'form-control'}),
-            'telefonoContacto1': forms.TextInput(attrs={'class':'form-control'}),
-            'emailContacto1': forms.EmailInput(attrs={'class':'form-control'}),
-            'nombreContacto2': forms.TextInput(attrs={'class':'form-control'}),
-            'telefonoContacto2': forms.TextInput(attrs={'class':'form-control'}),
-            'emailContacto2': forms.EmailInput(attrs={'class':'form-control'}),
-            'representanteLegal': forms.TextInput(attrs={'class':'form-control'}),
-            'rutRepresentanteLegal': forms.TextInput(attrs={'class':'form-control'}),
+            'rutEmpresa': forms.TextInput(attrs={'class': 'form-control', 'style': 'width: 300px'}),
+            'nombreDeFantasia': forms.TextInput(attrs={'class':'form-control', 'style': 'width: 300px'}),
+            'razonSocial': forms.TextInput(attrs={'class':'form-control ', 'style': 'width: 300px'}),
+            'fechaIngresoCliente': forms.DateInput(attrs={'class':'form-control','type':'date', 'style': 'width: 300px'}),
+            'claveSII': forms.TextInput(attrs={'class':'form-control', 'style': 'width: 300px'}),
+            'nombreContacto1': forms.TextInput(attrs={'class':'form-control', 'style': 'width: 300px'}),
+            'telefonoContacto1': forms.TextInput(attrs={'class':'form-control', 'style': 'width: 300px'}),
+            'emailContacto1': forms.EmailInput(attrs={'class':'form-control', 'style': 'width: 300px'}),
+            'nombreContacto2': forms.TextInput(attrs={'class':'form-control', 'style': 'width: 300px'}),
+            'telefonoContacto2': forms.TextInput(attrs={'class':'form-control', 'style': 'width: 300px'}),
+            'emailContacto2': forms.EmailInput(attrs={'class':'form-control', 'style': 'width: 300px'}),
+            'representanteLegal': forms.TextInput(attrs={'class':'form-control', 'style': 'width: 300px'}),
+            'rutRepresentanteLegal': forms.TextInput(attrs={'class':'form-control', 'style': 'width: 300px'}),
             #'banco': forms.TextInput(attrs={'class':'form-control'}),
             #'tipoCuenta': forms.TextInput(attrs={'class':'form-control'}),
-            'numeroCuenta': forms.TextInput(attrs={'class':'form-control'}),
-            'claveSIIRepresentante': forms.TextInput(attrs={'class':'form-control'}),
-            'inicioActividades': forms.DateInput(attrs={'class':'form-control','type':'date'}),
-            #'regimenTributario': forms.TextInput(attrs={'class':'form-control'}),
-            'claveCertificadoDigital': forms.TextInput(attrs={'class':'form-control'}),
-            'vencimientoCertificadoDigital': forms.DateInput(attrs={'class':'form-control','type':'date'}),
-            'usuarioPrevired': forms.TextInput(attrs={'class':'form-control'}),
-            'clavePrevired': forms.TextInput(attrs={'class':'form-control'}),
-            'otroServicio': forms.TextInput(attrs={'class':'form-control'}),
+            'numeroCuenta': forms.TextInput(attrs={'class':'form-control', 'style': 'width: 300px'}),
+            'claveSIIRepresentante': forms.TextInput(attrs={'class':'form-control', 'style': 'width: 300px'}),
+            'inicioActividades': forms.DateInput(attrs={'class':'form-control','type':'date', 'style': 'width: 300px'}),
+            #'regimenTributario': forms.TextInput(attrs={'class':'form-control', 'style': 'width: 300px'}),
+            'claveCertificadoDigital': forms.TextInput(attrs={'class':'form-control', 'style': 'width: 300px'}),
+            'vencimientoCertificadoDigital': forms.DateInput(attrs={'class':'form-control','type':'date', 'style': 'width: 300px'}),
+            'usuarioPrevired': forms.TextInput(attrs={'class':'form-control', 'style': 'width: 300px'}),
+            'clavePrevired': forms.TextInput(attrs={'class':'form-control', 'style': 'width: 300px'}),
+            'otroServicio': forms.TextInput(attrs={'class':'form-control', 'style': 'width: 300px'}),
             'estado': forms.CheckboxInput(attrs={'class':'form-check-input'}),
         }

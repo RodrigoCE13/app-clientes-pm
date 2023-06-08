@@ -3,44 +3,53 @@
 {% block content %}
 <div clas="">
     <div class="container">
-        <div class= "row">
+        <div class="row">
             <div class="col-md-12 search mt-5">
                 <form method="get">
                     <div id="custom-search-input">
                         <div class="input-group col-md-12">
-                            <input type="text" class="form-control" placeholder="buscar..." name="buscar"  >
+                            <input type="text" class="form-control" placeholder="buscar..." name="buscar">
                             <span class="input-group-list">
                                 <i class="icon icon-search"></i>
-                                <button type="submit" class="btn btn-primary">buscar</button>                       
-                        </div>    
+                                <button type="submit" class="btn btn-primary">buscar</button>
+                        </div>
                     </div>
-                </form>    
-            </div>    
+                </form>
+            </div>
         </div>
     </div>
 </div>
 
 <main class="container">
     <div class="row">
-        <div class="col-md-6 offset-md-3">
+        <div class="col-md-12">
             <h1 class="text-center py-5">Lista de Clientes</h1>
 
-            <ul class="list-group">
-                {% for cliente in clientes %}
-                <a class="list-group-item" href="{% url 'cliente_detail' cliente.id %}">         
-                    <header class="d-flex justify-content-between">
-                        {% if cliente.estado %}
-                            <h3 class="fw-bold">{{cliente.nombreDeFantasia}}</h3>
-                            <p>{{cliente.rutEmpresa}}</p>
-                        {% else %}
-                            <h3 class="text-secondary" >{{cliente.nombreDeFantasia}}</h3>
-                            <p>{{cliente.rutEmpresa}}</p>
-                        {% endif %}
-                    </header>
-                    <p>{{cliente.razonSocial}}</p>
-                </a>
-                {% endfor %}
-            </ul>
+            <table class="table table-responsiva">
+                <thead>
+                    <tr>
+                        <th>Nombre de Fantasía</th>
+                        <th>RUT Empresa</th>
+                        <th>Razón Social</th>
+                        <th>Aciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cliente in clientes %}
+                    <tr>
+                        <td>
+                            {% if cliente.estado %}
+                                <h3 class="fw-bold">{{ cliente.nombreDeFantasia }}</h3>
+                            {% else %}
+                                <h3 class="text-secondary">{{ cliente.nombreDeFantasia }}</h3>
+                            {% endif %}
+                        </td>
+                        <td>{{ cliente.rutEmpresa }}</td>
+                        <td>{{ cliente.razonSocial }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 </main>

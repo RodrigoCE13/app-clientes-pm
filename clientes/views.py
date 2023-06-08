@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ClienteForm
 from .models import Cliente
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_protect
 from django.db.models import Q
 
 # Create your views here.
@@ -22,6 +23,7 @@ def clientes(request):
     return render(request, 'clientes.html',{'clientes':clientes})
 @login_required
 #crear clientes
+@csrf_protect
 def create_clientes(request):
     if request.method == 'GET':
         return render(request, 'create-cliente.html', {
@@ -31,14 +33,15 @@ def create_clientes(request):
         try:
             form = ClienteForm(request.POST)
             new_cliente = form.save(commit=False)
-            new_cliente.user=request.user
+            new_cliente.user = request.user
             new_cliente.save()
             return redirect('clientes')
         except ValueError:
             return render(request, 'create-cliente.html', {
-                'form': ClienteForm,
+                'form': ClienteForm(),
                 'error': 'Error al crear cliente'
             })
+
 @login_required
 #editar clientes
 def cliente_detail(request, cliente_id):
@@ -66,4 +69,10 @@ def cliente_delete(request, cliente_id):
     if(request.method=='POST'):
         cliente.delete()
         return redirect('clientes')
+    
+
+def verCliente(request, cliente_id):
+    cliente = get_object_or_404(Cliente, pk=cliente_id)
+    return render(request, 'vercliente.html', {'cliente': cliente})
+
 

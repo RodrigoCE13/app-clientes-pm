@@ -2,6 +2,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style type="text/css">
+  .sidenav{
+    height:100%;
+    width:160px;
+    position: fixed;
+    z.index:1;
+    top:0;
+    left:0;
+    backgroud-color:#111;
+    overflow-x::hidden;
+    padding-top:20px;
+  }
+</style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +24,8 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'js/base.js' %}">
 </head>
-<body>      
+<body>   
+  <div class="sidenav">
       <div class="  flex-shrink-0 p-3 bg-light" style="width: 280px;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
               <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
@@ -73,7 +87,7 @@
             </div>
           </div>
         </div>
-        <div class="contenido ">
+        <div id="content", name="content" class="main ">
           {% block content %}
           {% endblock %}
         </div>

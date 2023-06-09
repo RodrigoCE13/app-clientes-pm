@@ -20,11 +20,14 @@
     </div>
 </div>
 
-<main class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1 class="text-center py-5">Lista de Clientes</h1>
-
+<main class="container card-body mt-3  ">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Clientes</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <table class="table table-responsiva">
                 <thead>
                     <tr>
@@ -39,19 +42,25 @@
                     <tr>
                         <td>
                             {% if cliente.estado %}
-                                <h3 class="fw-bold">{{ cliente.nombreDeFantasia }}</h3>
+                                <h4 class="fw-bold">{{ cliente.nombreDeFantasia }}</h4>
                             {% else %}
-                                <h3 class="text-secondary">{{ cliente.nombreDeFantasia }}</h3>
+                                <h4 class="text-secondary">{{ cliente.nombreDeFantasia }}</h4>
                             {% endif %}
                         </td>
                         <td>{{ cliente.rutEmpresa }}</td>
                         <td>{{ cliente.razonSocial }}</td>
-                    </tr>
+                        <td>
+                            <a href="{% url 'cliente_detail' cliente.id %}" class="btn btn-primary">Editar</a>
+                            <a href="{% url 'verCliente' cliente.id %}" class="btn btn-primary " data-nombre="{{cliente.nombre}}" id="verCliente">Ver</a>
+                        </td>
+                        </tr>                    
                     {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
+</div>
+</div>
 </main>
 
 {% endblock %}

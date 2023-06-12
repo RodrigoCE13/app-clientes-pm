@@ -16,7 +16,7 @@ def clientes(request):
     clientes = Cliente.objects.filter(estado=True) 
     if queryset:
         clientes=Cliente.objects.filter(
-            Q(nombreDeFantasia__icontains= queryset)
+            Q(rutEmpresa__icontains= queryset)
         ).distinct()   
     clientes=Cliente.objects.all()#en caso de quere mostrar solo los datos del usuario logeado ""Cliente.objects.filter(user=request.user)""
     return render(request, 'clientes.html',{'clientes':clientes})

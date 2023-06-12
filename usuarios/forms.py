@@ -9,16 +9,16 @@ class UsuarioForm(forms.ModelForm):
         ('UserClient', 'Usuario Cliente'),
         ('UserAdmin', 'Usuario Administrador')
     )
-    rol_usuario = forms.ChoiceField(choices=roles, widget=forms.Select(attrs={'class': 'form-select'}))
-    cliente= forms.ModelChoiceField(queryset=Cliente.objects.filter(estado=True), empty_label="Seleccione un cliente", widget=forms.Select(attrs={'class': 'form-select'}),required=False)
+    rol_usuario = forms.ChoiceField(choices=roles, widget=forms.Select(attrs={'class': 'form-select shadow-sm','onchange':'selectCliente()'}))
+    cliente= forms.ModelChoiceField(queryset=Cliente.objects.filter(estado=True), empty_label="Seleccione un cliente", widget=forms.Select(attrs={'class': 'form-select shadow-sm'}),required=False)
     class Meta:
         model=Usuario
         fields=['nombre', 'apellido','email','rol_usuario', 'nombreDeUsuario','password','cliente', 'estado']
         widgets={
-            'nombre': forms.TextInput(attrs={'class':'form-control'}),
-            'apellido': forms.TextInput(attrs={'class':'form-control'}),
-            'email': forms.EmailInput(attrs={'class':'form-control'}),
-            'nombreDeUsuario': forms.TextInput(attrs={'class':'form-control'}),
-            'password': forms.TextInput(attrs={'class':'form-control'}),
-            'estado': forms.CheckboxInput(attrs={'class':'form-check-input'}),
+            'nombre': forms.TextInput(attrs={'class':'form-control shadow-sm'}),
+            'apellido': forms.TextInput(attrs={'class':'form-control shadow-sm'}),
+            'email': forms.EmailInput(attrs={'class':'form-control shadow-sm'}),
+            'nombreDeUsuario': forms.TextInput(attrs={'class':'form-control shadow-sm'}),
+            'password': forms.TextInput(attrs={'class':'form-control shadow-sm'}),
+            'estado': forms.CheckboxInput(attrs={'class':'form-check-input shadow-sm'}),
         }

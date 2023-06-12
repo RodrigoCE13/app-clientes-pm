@@ -2,21 +2,174 @@
 
 {% block content %}
 <main class="container">
-    <div class="row">
+    <div class="row mb-5">
         <div class="col mt-3">
-            <form action="/clientes/create/" method="POST" class="form form-control">
+            <form action="/clientes/create/" method="POST" class="form">
                 <h1>Crear cliente</h1>
-
+                <p>Los campos marcado son obligatorios</p>
                 {{error}}
                 {% csrf_token %}
-                {{form.as_p}}
+                <div class="row mt-4">
+                    <div class="form-group col">
+                        <label for="{{ form.rutEmpresa.id_for_label }}">RUT Empresa:</label>
+                        {{ form.rutEmpresa }}
+                    </div>     
+                    <div class="form-group col">
+                        <label for="{{ form.nombreDeFantasia.id_for_label }}">Nombre de Fantasía:</label>
+                        {{ form.nombreDeFantasia }}
+                    </div>               
+                </div>
+                <div class="form-group ">
+                    <label for="{{ form.razonSocial.id_for_label }}">Razon social:</label>
+                    {{ form.razonSocial }}
+                </div>     
+                <div class="row mt-2">
+                    <div class="form-group col">
+                        <label for="{{ form.fechaIngresoCliente.id_for_label }}">Fecha de ingreso:</label>
+                        {{ form.fechaIngresoCliente }}
+                    </div>   
+                    <div class="form-group col">
+                        <label for="{{ form.claveSII.id_for_label }}">Clave SII:</label>
+                        {{ form.claveSII }}
+                    </div>     
+                </div>
+                <div class="row mt-4">
+                    <div class="form-group col">
+                        <label for="{{ form.nombreContacto1.id_for_label }}">Nombre de contacto:</label>
+                        {{ form.nombreContacto1 }}
+                    </div>  
+                    <div class="form-group col">
+                        <label for="{{ form.telefonoContacto1.id_for_label }}">Telefono contacto:</label>
+                        {{ form.telefonoContacto1 }}
+                    </div> 
+                </div>
+                <div class="form-group col mt-2">
+                    <label for="{{ form.emailContacto1.id_for_label }}">Email contacto:</label>
+                    {{ form.emailContacto1 }}
+                </div> 
 
-                <button class="btn btn-primary">
+                 <!-- Otro contacto -->
+                 <div class="form-group form-check mt-2">
+                    <label for="otroContactoCheckbox" class="form-check-label">¿Otro contacto?</label>
+                    <input type="checkbox" class="form-check-input shadow-sm" id="otroContactoCheckbox" onchange="toggleOtroContactoFields()">
+                </div>
+
+                <div id="otroContactoFieldsContainer"></div>
+                <!-- Fin otro contacto -->
+
+                <div class="row mt-4">
+                    <div class="form-group col">
+                        <label for="{{ form.representanteLegal.id_for_label }}">Representante legal:</label>
+                        {{ form.representanteLegal }}
+                    </div>  
+                    <div class="form-group col">
+                        <label for="{{ form.rutRepresentanteLegal.id_for_label }}">Rut representante:</label>
+                        {{ form.rutRepresentanteLegal }}
+                    </div> 
+                    <div class="form-group col">
+                        <label for="{{ form.claveSIIRepresentante.id_for_label }}">Clave SII representante:</label>
+                        {{ form.claveSIIRepresentante }}
+                    </div> 
+                </div>
+                <div class="row mt-4">
+                    <div class="form-group col">
+                        <label for="{{ form.banco.id_for_label }}">Banco:</label>
+                        {{ form.banco }}
+                    </div>
+                    <div class="form-group col">
+                        <label for="{{ form.tipoCuenta.id_for_label }}">Tipo de cuenta:</label>
+                        {{ form.tipoCuenta }}
+                    </div>
+                    <div class="form-group col">
+                        <label for="{{ form.numeroCuenta.id_for_label }}">Numero de cuenta:</label>
+                        {{ form.numeroCuenta }}
+                    </div> 
+                </div>
+                <div class="row mt-4">
+                    <div class="form-group col">
+                        <label for="{{ form.inicioActividades.id_for_label }}">Fecha de inicio de actividades:</label>
+                        {{ form.inicioActividades }}
+                    </div> 
+                    <div class="form-group col">
+                        <label for="{{ form.regimenTributario.id_for_label }}">Regimen tributario:</label>
+                        {{ form.regimenTributario }}
+                    </div> 
+                </div>
+                <div class="row mt-4">
+                    <div class="form-group col">
+                        <label for="{{ form.claveCertificadoDigital.id_for_label }}">Clave certifica digital:</label>
+                        {{ form.claveCertificadoDigital }}
+                    </div> 
+                    <div class="form-group col">
+                        <label for="{{ form.vencimientoCertificadoDigital.id_for_label }}">Fecha de vencimiento Cert. Digital:</label>
+                        {{ form.vencimientoCertificadoDigital }}
+                    </div> 
+                </div>
+                <div class="row mt-4">
+                    <div class="form-group col">
+                        <label for="{{ form.usuarioPrevired.id_for_label }}">Usuario Previred:</label>
+                        {{ form.usuarioPrevired }}
+                    </div> 
+                    <div class="form-group col">
+                        <label for="{{ form.clavePrevired.id_for_label }}">Clave Previred:</label>
+                        {{ form.clavePrevired }}
+                    </div> 
+                </div>
+                <div class="row mt-4">
+                    <div class="form-group col">
+                        <label for="{{ form.servicioContable.id_for_label }}">Servicio contable:</label>
+                        {{ form.servicioContable }}
+                    </div>
+                    <div class="form-group col">
+                        <label for="{{ form.ServicioPortalRRHH.id_for_label }}">Servicio portal RRHH:</label>
+                        {{ form.ServicioPortalRRHH }}
+                    </div>
+                    <div class="form-group col">
+                        <label for="{{ form.servicioRemuneraciones.id_for_label }}">Numero de remuneraciones:</label>
+                        {{ form.servicioRemuneraciones }}
+                    </div>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="{{ form.otroServicio.id_for_label }}">Otros servicios:</label>
+                    {{ form.otroServicio }}
+                </div>
+                <div class="form-group mt-4">
+                    <label for="{{ form.estado.id_for_label }}">Estado activo/inactivo:</label>
+                    {{ form.estado }}
+                </div>
+                <button class="btn btn-primary mt-4">
                     Crear cliente
                 </button>
-            
             </form>
         </div>
     </div>
 </main>
+
+<script>
+    function toggleOtroContactoFields() {
+        const otroContactoCheckbox = document.getElementById('otroContactoCheckbox');
+        const otroContactoFieldsContainer = document.getElementById('otroContactoFieldsContainer');
+
+        if (otroContactoCheckbox.checked) {
+            otroContactoFieldsContainer.innerHTML = `
+                <div class="row mt-4">
+                    <div class="form-group col">
+                        <label for="{{ form.nombreContacto2.id_for_label }}">Nombre de contacto 2:</label>
+                        {{ form.nombreContacto2 }}
+                    </div>  
+                    <div class="form-group col">
+                        <label for="{{ form.telefonoContacto2.id_for_label }}">Teléfono contacto 2:</label>
+                        {{ form.telefonoContacto2 }}
+                    </div> 
+                </div>
+                <div class="form-group col">
+                    <label for="{{ form.emailContacto2.id_for_label }}">Email contacto 2:</label>
+                    {{ form.emailContacto2 }}
+                </div>
+            `;
+        } else {
+            otroContactoFieldsContainer.innerHTML = '';
+        }
+    }
+</script>
 {% endblock %}

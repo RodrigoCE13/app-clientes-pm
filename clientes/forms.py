@@ -20,9 +20,9 @@ class ClienteForm(forms.ModelForm):
         ('vista', 'Cuenta Vista'),
         ('otro', 'Otro tipo de cuenta'),
     )
-    banco = forms.ChoiceField(choices=bancos, widget=forms.Select(attrs={'class': 'form-select'}))
-    tipoCuenta = forms.ChoiceField(choices=tiposCuenta, widget=forms.Select(attrs={'class': 'form-select'}))
-    regimenTributario = forms.ChoiceField(choices=regimens, widget=forms.Select(attrs={'class': 'form-select'}))
+    banco = forms.ChoiceField(choices=bancos, widget=forms.Select(attrs={'class': 'form-select shadow-sm'}), required=False)
+    tipoCuenta = forms.ChoiceField(choices=tiposCuenta, widget=forms.Select(attrs={'class': 'form-select shadow-sm'}))
+    regimenTributario = forms.ChoiceField(choices=regimens, widget=forms.Select(attrs={'class': 'form-select shadow-sm border border-primary'}), required=False)
     
     class Meta:
         model=Cliente
@@ -35,32 +35,32 @@ class ClienteForm(forms.ModelForm):
                 'usuarioPrevired','clavePrevired','servicioContable','servicioRemuneraciones',
                 'ServicioPortalRRHH','otroServicio','estado']
         widgets={
-            'rutEmpresa': forms.TextInput(attrs={'class':'form-control'}),
-            'nombreDeFantasia': forms.TextInput(attrs={'class':'form-control'}),
-            'razonSocial': forms.TextInput(attrs={'class':'form-control'}),
-            'fechaIngresoCliente': forms.DateInput(attrs={'class':'form-control','type':'date'}),
-            'claveSII': forms.TextInput(attrs={'class':'form-control'}),
-            'nombreContacto1': forms.TextInput(attrs={'class':'form-control'}),
-            'telefonoContacto1': forms.TextInput(attrs={'class':'form-control'}),
-            'emailContacto1': forms.EmailInput(attrs={'class':'form-control'}),
-            'nombreContacto2': forms.TextInput(attrs={'class':'form-control'}),
-            'telefonoContacto2': forms.TextInput(attrs={'class':'form-control'}),
-            'emailContacto2': forms.EmailInput(attrs={'class':'form-control'}),
-            'representanteLegal': forms.TextInput(attrs={'class':'form-control'}),
-            'rutRepresentanteLegal': forms.TextInput(attrs={'class':'form-control'}),
+            'rutEmpresa': forms.TextInput(attrs={'class':'form-control shadow-sm border border-primary'}),
+            'nombreDeFantasia': forms.TextInput(attrs={'class':'form-control shadow-sm'}),
+            'razonSocial': forms.TextInput(attrs={'class':'form-control shadow-sm border border-primary'}),
+            'fechaIngresoCliente': forms.DateInput(attrs={'class':'form-control shadow-sm border border-primary','type':'date'}),
+            'claveSII': forms.TextInput(attrs={'class':'form-control shadow-sm border border-primary'}),
+            'nombreContacto1': forms.TextInput(attrs={'class':'form-control shadow-sm border border-primary'}),
+            'telefonoContacto1': forms.TextInput(attrs={'class':'form-control shadow-sm border border-primary'}),
+            'emailContacto1': forms.EmailInput(attrs={'class':'form-control shadow-sm border border-primary'}),
+            'nombreContacto2': forms.TextInput(attrs={'class':'form-control shadow-sm'}),
+            'telefonoContacto2': forms.TextInput(attrs={'class':'form-control shadow-sm'}),
+            'emailContacto2': forms.EmailInput(attrs={'class':'form-control shadow-sm'}),
+            'representanteLegal': forms.TextInput(attrs={'class':'form-control shadow-sm border border-primary'}),
+            'rutRepresentanteLegal': forms.TextInput(attrs={'class':'form-control shadow-sm border border-primary'}),
             #'banco': forms.TextInput(attrs={'class':'form-control'}),
             #'tipoCuenta': forms.TextInput(attrs={'class':'form-control'}),
             'numeroCuenta': forms.TextInput(attrs={'class':'form-control'}),
-            'claveSIIRepresentante': forms.TextInput(attrs={'class':'form-control'}),
-            'inicioActividades': forms.DateInput(attrs={'class':'form-control','type':'date'}),
+            'claveSIIRepresentante': forms.TextInput(attrs={'class':'form-control shadow-sm'}),
+            'inicioActividades': forms.DateInput(attrs={'class':'form-control shadow-sm border border-primary','type':'date'}),
             #'regimenTributario': forms.TextInput(attrs={'class':'form-control'}),
-            'claveCertificadoDigital': forms.TextInput(attrs={'class':'form-control'}),
-            'vencimientoCertificadoDigital': forms.DateInput(attrs={'class':'form-control','type':'date'}),
-            'usuarioPrevired': forms.TextInput(attrs={'class':'form-control'}),
-            'clavePrevired': forms.TextInput(attrs={'class':'form-control'}),
-            'servicioContable': forms.CheckboxInput(attrs={'class':'form-check-input'}),
-            'servicioRemuneraciones': forms.NumberInput(attrs={'class':'form-control'}),
-            'ServicioPortalRRHH': forms.CheckboxInput(attrs={'class':'form-check-input'}),
-            'otroServicio': forms.TextInput(attrs={'class':'form-control'}),
-            'estado': forms.CheckboxInput(attrs={'class':'form-check-input'}),
+            'claveCertificadoDigital': forms.TextInput(attrs={'class':'form-control shadow-sm'}),
+            'vencimientoCertificadoDigital': forms.DateInput(attrs={'class':'form-control shadow-sm','type':'date'}),
+            'usuarioPrevired': forms.TextInput(attrs={'class':'form-control shadow-sm'}),
+            'clavePrevired': forms.TextInput(attrs={'class':'form-control shadow-sm'}),
+            'servicioContable': forms.CheckboxInput(attrs={'class':'form-check-input shadow-sm'}),
+            'servicioRemuneraciones': forms.NumberInput(attrs={'class':'form-control shadow-sm'}),
+            'ServicioPortalRRHH': forms.CheckboxInput(attrs={'class':'form-check-input shadow-sm'}),
+            'otroServicio': forms.TextInput(attrs={'class':'form-control shadow-sm'}),
+            'estado': forms.CheckboxInput(attrs={'class':'form-check-input shadow-sm'}),
         }

@@ -37,10 +37,17 @@
                     </form>
                 </div>
                 <div class="col text-end">
+                    {% if usuario.is_active %}
                     <form action="{% url 'desactivar_usuario' usuario.id %}" method="POST">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-warning"><i class="bi bi-person-dash"></i> Desactivar</button>
                     </form>
+                    {% else %}
+                    <form action="{% url 'activar_usuario' usuario.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success"><i class="bi bi-person-dash"></i> Activar</button>
+                    </form>
+                    {% endif %}
                 </div>
             </div>
         </div>

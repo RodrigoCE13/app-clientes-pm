@@ -41,6 +41,7 @@ def usuario_detail(request, usuario_id):
         return render(request, 'usuario-detail.html', {'usuario': usuario, 'form': form, 'error': 'Error al editar usuario'})
 
 @login_required
+#desactivar usuario
 def desactivar_usuario(request, usuario_id):
     usuario = get_object_or_404(User, pk=usuario_id)
     
@@ -53,6 +54,13 @@ def desactivar_usuario(request, usuario_id):
     usuario.is_active = False
     usuario.save()
     
+    return redirect('usuarios')
+@login_required
+#activar usuario
+def activar_usuario(request, usuario_id):
+    usuario = get_object_or_404(User, pk=usuario_id)
+    usuario.is_active = True
+    usuario.save()
     return redirect('usuarios')
 
 

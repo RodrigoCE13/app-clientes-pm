@@ -30,11 +30,13 @@ urlpatterns = [
     path('clientes/create/',clientes_views.create_clientes, name='crear_clientes'),
     path('clientes/<int:cliente_id>/',clientes_views.cliente_detail, name='cliente_detail'),
     path('clientes/<int:cliente_id>/delete',clientes_views.cliente_delete, name='cliente_delete'),
+    path('clientes/ver/<int:cliente_id>/', clientes_views.ver_cliente, name="ver_cliente"),
 
     path('usuarios/',usuarios_views.usuarios, name='usuarios'),
-    path('usuarios/create/',usuarios_views.create_usuarios, name='crear_usuarios'),
+    path('usuarios/create/',usuarios_views.registrar_usuarios, name='registrar_usuarios'),
     path('usuarios/<int:usuario_id>/',usuarios_views.usuario_detail, name='usuario_detail'),
     path('usuarios/<int:usuario_id>/delete',usuarios_views.usuario_delete, name='usuario_delete'),
+    path('usuarios/<int:usuario_id>/desactive',usuarios_views.desactivar_usuario, name='desactivar_usuario'),
 
     path('logout/',core_views.signout, name='logout'),
     path('signin/',core_views.signin, name='signin'),

@@ -4,15 +4,14 @@
 {% if usuarios %}
 <div clas="">
     <div class="container">
-        <div class="row">
+        <div class= "row">
             <div class="col-md-12 search mt-5">
                 <form method="get">
                     <div id="custom-search-input">
-                        <div class="input-group col-md-12">
-                            <input type="text" class="form-control" placeholder="buscar..." name="buscar"  >
+                        <div class="input-group col-md-12 ">
+                            <input type="text" class="form-control me-2" placeholder="buscar..." name="buscar"  >
                             <span class="input-group-list">
-                                <i class="icon icon-search"></i>
-                                <button type="submit" class="btn btn-primary">buscar</button>                       
+                                <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i></button>                       
                         </div>    
                     </div>
                 </form>    
@@ -30,34 +29,44 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Email</th>
-                        <th>rol</th>
-                        <th>Ver</th>
+                        <th>Nombre de usuario</th>
+                        <th>editar</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for usuario in usuarios %}
-                    {% if usuario.estado %}
+                    {% if usuario.is_active %}
                     <tr>
-                        <td>{{usuario.nombre}} {{usuario.apellido}}</td>
+                        <td>{{usuario.first_name}} {{usuario.last_name}}</td>
                         <td>{{usuario.email}}</td>
-                        <td>{{usuario.rol_usuario}}</td>
-                        <td><a href="{% url 'usuario_detail' usuario.id %}" class="btn btn-primary"><i class="bi bi-eye-fill"></i></a></td>
+                        <td>{{usuario.username}}</td>
+                        <td>
+                            <a href="{% url 'usuario_detail' usuario.id %}" class="btn btn-primary"><i class="bi bi-pen-fill"></i></a>
+                        </td>
                     </tr>
                     {% else %}
                     <tr>
-                        <td class="table-secondary"></td>
-                        <td class="table-secondary"></td>
-                        <td class="table-secondary"></td>
-                        <td class="table-secondary"><a href="{% url 'usuario_detail' usuario.id %}" class="btn btn-primary"><i class="bi bi-eye-fill"></i></a></td>
+                        <td class="table-secondary"><i class="bi bi-lock-fill"></i> {{usuario.first_name}} {{usuario.last_name}}</td>
+                        <td class="table-secondary">{{usuario.email}}</td>
+                        <td class="table-secondary">{{usuario.username}}</td>
+                        <td class="table-secondary">
+                            <a href="{% url 'usuario_detail' usuario.id %}" class="btn btn-primary"><i class="bi bi-pen-fill"></i></a>
+                        </td>
                     </tr>
                     {% endif %}
                     {% endfor %}
                 </tbody>
             </table>
+            
         </div>
     </div>
 </main>
 {% else %}
-<h4 class="m-5 text-secondary">No Existen usuarios en el sistema</h4>
+<div class="container">
+    <h4 class="m-5 text-secondary">No Existen usuarios en el sistema</h4>
+</div>
 {% endif %}
+<div class="container text-end">
+    <a class="btn btn-primary" href="/usuarios/create">Agregar usuario</a>
+</div>
 {% endblock %}

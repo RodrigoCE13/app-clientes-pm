@@ -33,7 +33,8 @@ class Cliente(models.Model):
 
     estado=models.BooleanField(default=True)
     created=models.DateTimeField(auto_now_add=True)
-    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+
 
     def __str__(self):
         return self.razonSocial+' - '+self.rutEmpresa

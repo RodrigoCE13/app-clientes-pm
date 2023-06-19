@@ -3,8 +3,8 @@
 
 <main class="container">
     <div class="row mb-5">
-        <div class="col">
-            <h1>{{cliente.nombre}}</h1>
+        <div class="col mt-4">
+            <h1>{{cliente.razonSocial}}</h1>
 
             <form method="POST">
                 {% csrf_token %}
@@ -145,13 +145,13 @@
                     {{ form.estado }}
                 </div>
                 <button class="btn btn-primary mt-2">
-                    Editar
+                    <i class="bi bi-pencil-square"></i> Editar
                 </button>
             </form>
             <form action="{% url 'cliente_delete' cliente.id %}" method="POST">
                 {% csrf_token %}
                 <button class="btn btn-danger mt-2 text-end ">
-                    Eliminar
+                    <i class="bi bi-trash-fill"></i> Eliminar
                 </button>
             </form>
 

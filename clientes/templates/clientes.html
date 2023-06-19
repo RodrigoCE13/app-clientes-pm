@@ -11,8 +11,7 @@
                         <div class="input-group col-md-12 ">
                             <input type="text" class="form-control me-2" placeholder="buscar..." name="buscar"  >
                             <span class="input-group-list">
-                                <i class="icon icon-search"></i>
-                                <button type="submit" class="btn btn-primary">buscar</button>                       
+                                <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i></button>                       
                         </div>    
                     </div>
                 </form>    
@@ -35,7 +34,7 @@
                         <th>Telefono</th>
                         <th>Ingreso</th>
                         <th>Regimen</th>
-                        <th>Ver</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,17 +47,29 @@
                         <td>{{cliente.telefonoContacto1}}</td>
                         <td>{{cliente.fechaIngresoCliente}}</td>
                         <td>{{cliente.regimenTributario}}</td>
-                        <td><a href="{% url 'cliente_detail' cliente.id %}" class="btn btn-primary"><i class="bi bi-eye-fill"></i></a></td>
+                        <td>
+                            {% if user.is_superuser %}
+                            <a href="{% url 'cliente_detail' cliente.id %}" class="btn btn-primary"><i class="bi bi-pen-fill"></i></a>
+                            {% else %}
+                            <a href="{% url 'ver_cliente' cliente.id %}" class="btn btn-primary"><i class="bi bi-eye-fill"></i></a>
+                            {% endif %}
+                        </td>
                     </tr>
                     {% else %}
                     <tr>
-                        <td class="table-secondary">{{cliente.razonSocial}}</td>
+                        <td class="table-secondary"><i class="bi bi-lock-fill"></i> {{cliente.razonSocial}}</td>
                         <td class="table-secondary">{{cliente.rutEmpresa}}</td>
                         <td class="table-secondary">{{cliente.nombreContacto1}}</td>
                         <td class="table-secondary">{{cliente.telefonoContacto1}}</td>
                         <td class="table-secondary">{{cliente.fechaIngresoCliente}}</td>
                         <td class="table-secondary">{{cliente.regimenTributario}}</td>
-                        <td class="table-secondary"><a href="{% url 'cliente_detail' cliente.id %}" class="btn btn-primary"><i class="bi bi-eye-fill"></i></a></td>
+                        <td class="table-secondary">
+                            {% if user.is_superuser %}
+                            <a href="{% url 'cliente_detail' cliente.id %}" class="btn btn-primary"><i class="bi bi-pen-fill"></i></a>
+                            {% else %}
+                            <a href="{% url 'ver_cliente' cliente.id %}" class="btn btn-primary"><i class="bi bi-eye-fill"></i></a>
+                            {% endif %}
+                        </td>
                     </tr>
                     {% endif %}
                     {% endfor %}
@@ -69,5 +80,10 @@
 </main>
 {% else %}
 <h4 class="m-5 text-secondary">No Existen clientes en el sistema</h4>
+{% endif %}
+{% if user.is_superuser %}
+<div class="container text-end">
+    <a class="btn btn-primary" href="/clientes/create">Agregar cliente</a>
+</div>
 {% endif %}
 {% endblock %}

@@ -88,3 +88,10 @@ def cliente_delete(request, cliente_id):
         cliente.delete()
         return redirect('clientes')
 
+@login_required
+def ver_cliente(request, cliente_id):
+    cliente = get_object_or_404(Cliente, pk=cliente_id)
+
+    return render(request, 'ver-clientes.html', {'cliente': cliente})
+
+

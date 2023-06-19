@@ -22,6 +22,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/home">Home</a>
                 </li>
+                {% if user.is_superuser %}
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Usuarios
@@ -31,12 +32,15 @@
                     <li><a class="dropdown-item" href="/usuarios">Ver Usuarios</a></li>
                   </ul>
                 </li>
+                {% endif %}
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Clientes
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% if user.is_superuser %}
                     <li><a class="dropdown-item" href="/clientes/create">Agregar Cliente</a></li>
+                    {% endif %}
                     <li><a class="dropdown-item" href="/clientes">Ver Clientes</a></li>
                   </ul>
                 </li>

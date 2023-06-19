@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<main class="container">
+    <div class="row mb-5">
+        <div class="border rounded-4 shadow-sm p-4 col mt-4">
+            {% csrf_token %}
+            <h3 class="mb-4">{{cliente.razonSocial}}</h3>
+            <div class="row">
+                <div class="col">
+                    <h5>RUT: <span class="text-secondary">{{cliente.rutEmpresa}}</span></h5>
+                </div>
+                {% if cliente.nombreDeFantasia %}
+                <div class="col">
+                    <h5>Nombre: <span class="text-secondary">{{cliente.nombreDeFantasia}}</span></h5>
+                </div>
+                {% endif %}
+                <div class="col">
+                    <h5>Ingreso: <span class="text-secondary">{{cliente.fechaIngresoCliente}}</span></h5>
+                </div>
+                <div class="col">
+                    <h5>Clave SII: <span class="text-secondary">{{cliente.claveSII}}</span></h5>
+                </div>
+            </div>
+            <hr>
+            <h3 class="mb-4">Contacto</h3>
+            <div class="row">
+                <div class="col">
+                    <h5>Nombre: <span class="text-secondary">{{cliente.nombreContacto1}}</span></h5>
+                </div>
+                <div class="col">
+                    <h5>Telefono: <span class="text-secondary">{{cliente.telefonoContacto1}}</span></h5>
+                </div>
+                <div class="col">
+                    <h5>Email: <span class="text-secondary">{{cliente.emailContacto1}}</span></h5>
+                </div>
+            </div>
+            <div class="row">
+                {% if cliente.nombreContacto2 %}
+                <div class="col">
+                    <h5>Nombre: <span class="text-secondary">{{cliente.nombreContacto2}}</span></h5>
+                </div>
+                {% endif %}
+                {% if cliente.telefonoContacto2 %}
+                <div class="col">
+                    <h5>Telefono: <span class="text-secondary">{{cliente.telefonoContacto2}}</span></h5>
+                </div>
+                {% endif %}
+                {% if cliente.emailContacto2 %}
+                <div class="col">
+                    <h5>Email: <span class="text-secondary">{{cliente.emailContacto2}}</span></h5>
+                </div>
+                {% endif %}
+            </div>
+            <hr>
+            <h3 class="mb-4">Representante</h3>
+            <div class="row">
+                <div class="col">
+                    <h5>Nombre: <span class="text-secondary">{{cliente.representanteLegal}}</span></h5>
+                </div>
+                <div class="col">
+                    <h5>RUN: <span class="text-secondary">{{cliente.rutRepresentanteLegal}}</span></h5>
+                </div>
+                <div class="col">
+                    <h5>Clave SII Rep.: <span class="text-secondary">{{cliente.claveSIIRepresentante}}</span></h5>
+                </div>
+            </div>
+            <hr>
+            <h3 class="mb-4">Datos bancarios</h3>
+            <div class="row">
+                {% if cliente.banco %}
+                <div class="col">
+                    <h5>Banco: <span class="text-secondary">{{cliente.banco}}</span></h5>
+                </div>
+                {% else %}
+                <div class="col">
+                    <h5>Banco: <span class="text-secondary">sin informacion</span></h5>
+                </div>
+                {% endif %}
+                {% if cliente.tipoCuenta %}
+                <div class="col">
+                    <h5>Cuenta: <span class="text-secondary">{{cliente.tipoCuenta}}</span></h5>
+                </div>
+                {% else %}
+                <div class="col">
+                    <h5>Cuenta: <span class="text-secondary">sin informacion</span></h5>
+                </div>
+                {% endif %}
+                {% if cliente.numeroCuenta %}
+                <div class="col">
+                    <h5>N° Cuenta: <span class="text-secondary">{{cliente.numeroCuenta}}</span></h5>
+                </div>
+                {% else %}
+                <div class="col">
+                    <h5>N° Cuenta: <span class="text-secondary">sin informacion</span></h5>
+                </div>
+                {% endif %}
+            </div>
+            <hr>
+            <h3 class="mb-4">Otra informacion</h3>
+            <div class="row">
+                <div class="col">
+                    <h5>Inicio de actividades: <span class="text-secondary">{{cliente.inicioActividades}}</span></h5>
+                </div>
+                <div class="col">
+                    <h5>Regimen tributario: <span class="text-secondary">{{cliente.regimenTributario}}</span></h5>
+                </div>
+                {% if cliente.claveCertificadoDigital %}
+                <div class="col">
+                    <h5>Clave Cert. Digital: <span class="text-secondary">{{cliente.claveCertificadoDigital}}</span></h5>
+                </div>
+                {% else %}
+                <div class="col">
+                    <h5>Clave Cert. Digital: <span class="text-secondary">sin informacion</span></h5>
+                </div>
+                {% endif %}
+            </div>
+            <div class="row">
+                {% if cliente.vencimientoCertificadoDigital %}
+                <div class="col">
+                    <h5>Vencimiento Cert. digital: <span class="text-secondary">{{cliente.vencimientoCertificadoDigital}}</span></h5>
+                </div>
+                {% else %}
+                <div class="col">
+                    <h5>Vencimiento Cert. digital: <span class="text-secondary">sin informacion</span></h5>
+                </div>
+                {% endif %}
+                {% if cliente.usuarioPrevired %}
+                <div class="col">
+                    <h5>Usuario Previred: <span class="text-secondary">{{cliente.usuarioPrevired}}</span></h5>
+                </div>
+                {% else %}
+                <div class="col">
+                    <h5>Usuario Previred: <span class="text-secondary">sin informacion</span></h5>
+                </div>
+                {% endif %}
+                {% if cliente.clavePrevired %}
+                <div class="col">
+                    <h5>Clave Previred: <span class="text-secondary">{{cliente.clavePrevired}}</span></h5>
+                </div>
+                {% else %}
+                <div class="col">
+                    <h5>Clave Previred: <span class="text-secondary">sin informacion</span></h5>
+                </div>
+                {% endif %}
+            </div>
+            <div class="row">
+                {% if cliente.servicioContable %}
+                <div class="col">
+                    <h5>Servicio contable: <span class="text-secondary">{{cliente.servicioContable}}</span></h5>
+                </div>
+                {% else %}
+                <div class="col">
+                    <h5>Servicio contable: <span class="text-secondary">sin informacion</span></h5>
+                </div>
+                {% endif %}
+                {% if cliente.servicioRemuneraciones %}
+                <div class="col">
+                    <h5>Servicio remuneraciones: <span class="text-secondary">{{cliente.servicioRemuneraciones}}</span></h5>
+                </div>
+                {% else %}
+                <div class="col">
+                    <h5>Servicio remuneraciones: <span class="text-secondary">sin informacion</span></h5>
+                </div>
+                {% endif %}
+                {% if cliente.ServicioPortalRRHH %}
+                <div class="col">
+                    <h5>Serv. Portal RRHH: <span class="text-secondary">{{cliente.ServicioPortalRRHH}}</span></h5>
+                </div>
+                {% else %}
+                <div class="col">
+                    <h5>Serv. Portal RRHH: <span class="text-secondary">sin informacion</span></h5>
+                </div>
+                {% endif %}
+            </div>
+            
+            {% csrf_token %}
+        </div>
+    </div>
+</main>
+
+{% endblock %}

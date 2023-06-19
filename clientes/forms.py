@@ -21,8 +21,8 @@ class ClienteForm(forms.ModelForm):
         ('otro', 'Otro tipo de cuenta'),
     )
     banco = forms.ChoiceField(choices=bancos, widget=forms.Select(attrs={'class': 'form-select shadow-sm'}), required=False)
-    tipoCuenta = forms.ChoiceField(choices=tiposCuenta, widget=forms.Select(attrs={'class': 'form-select shadow-sm'}))
-    regimenTributario = forms.ChoiceField(choices=regimens, widget=forms.Select(attrs={'class': 'form-select shadow-sm border border-primary'}), required=False)
+    tipoCuenta = forms.ChoiceField(choices=tiposCuenta, widget=forms.Select(attrs={'class': 'form-select shadow-sm'}), required=False)
+    regimenTributario = forms.ChoiceField(choices=regimens, widget=forms.Select(attrs={'class': 'form-select shadow-sm border border-primary'}))
     
     class Meta:
         model=Cliente

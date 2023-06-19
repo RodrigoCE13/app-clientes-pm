@@ -2,8 +2,15 @@
 {% block content %}
 <main class="container py-5">
     <section class="card card-body">
-        <h1>Home</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed modi earum laudantium, placeat at repudiandae iusto, harum molestiae reprehenderit consequuntur fugiat doloribus ex neque. Obcaecati, perferendis. Neque doloremque voluptatum vel!</p>
+        {% if user.is_superuser %}
+        <h1><i class="bi bi-person-lock"></i> {{ request.user.username }} | Usuario Administrador</h1>
+        <hr>
+        <p>Este usuario posee permisos de lectura y escritura de datos.</p>
+        {% else %}
+        <h1><i class="bi bi-person"></i> {{ request.user.username }} | Usuario Pyme manager</h1>
+        <hr>
+        <p>Este usuario solo posee permisos de lectura de datos.</p>
+        {% endif %}
     </section>
 </main>
 {% endblock %}

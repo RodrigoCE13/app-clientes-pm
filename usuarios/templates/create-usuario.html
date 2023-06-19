@@ -6,75 +6,31 @@
         <div class="col mt-3">
             <form action="/usuarios/create/" method="POST" class="form ">
                 <h1>Crear usuario</h1>
-
                 {{error}}
                 {% csrf_token %}
-                <div class="row mt-4">
-                    <div class="col">
-                        <div class="form-group col">
-                            <label for="{{ form.nombre.id_for_label }}">Nombres:</label>
-                            {{ form.nombre }}
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group col">
-                            <label for="{{ form.apellido.id_for_label }}">Apellido:</label>
-                            {{ form.apellido }}
-                        </div>
-                    </div>
+                <div class="mb-3">
+                    <input type="email" name="email" class="form-control" placeholder="Correo electrónico">
                 </div>
-                <div class="form-group col mt-4">
-                    <label for="{{ form.email.id_for_label }}">Email:</label>
-                    {{ form.email }}
+                <div class="mb-3">
+                    <input type="text" name="first_name" class="form-control" placeholder="Nombre">
                 </div>
-                <div class="row mt-4">
-                    <div class="col">
-                        <div class="form-group col">
-                            <label for="{{ form.nombreDeUsuario.id_for_label }}">Nombre de usuario:</label>
-                            {{ form.nombreDeUsuario }}
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group col">
-                            <label for="{{ form.rol_usuario.id_for_label }}">Rol:</label>
-                            {{ form.rol_usuario }}
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group col">
-                            <label for="{{ form.password.id_for_label }}">Contraseña:</label>
-                            {{ form.password }}
-                        </div>
-                    </div>
+                <div class="mb-3">
+                    <input type="text" name="last_name" class="form-control" placeholder="Apellido">
                 </div>
-                <div id="clienteuser"></div>
-                <div class="form-group col mt-4">
-                    <label for="{{ form.estado.id_for_label }}">Estado activo/inactivo:</label>
-                    {{ form.estado }}
+                <div class="mb-3">
+                    <input type="text" name="username" class="form-control" placeholder="Nombre de usuario">
+                </div>
+                <div class="mb-3">
+                    <input type="password" name="password1" class="form-control" placeholder="Contraseña">
+                </div>
+                <div class="mb-3">
+                    <input type="password" name="password2" class="form-control" placeholder="Confirmar Contraseña">
                 </div>
                 <button class="btn btn-primary mt-4">
                     Crear usuario
                 </button>
-            
             </form>
         </div>
     </div>
 </main>
-<script>
-function selectCliente(){
-    const rol = document.getElementById("id_rol_usuario");
-    const containerCliente = document.getElementById("clienteuser");
-    if(rol.value == 'UserClient'){
-        containerCliente.innerHTML = `
-        <div class="form-group col mt-4">
-            <label for="{{ form.cliente.id_for_label }}">Empresa cliente:</label>
-            {{ form.cliente }}
-        </div>
-        `;
-    }else{
-        containerCliente.innerHTML = '';
-    }
-}
-
-</script>
 {% endblock %}

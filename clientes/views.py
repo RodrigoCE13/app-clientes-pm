@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
+
+from appclientes.decorators import admin_only
 from .forms import ClienteForm
 from .models import Cliente
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-
 # Create your views here.
 
 
@@ -21,6 +22,7 @@ def clientes(request):
     clientes=Cliente.objects.all()#en caso de quere mostrar solo los datos del usuario logeado ""Cliente.objects.filter(user=request.user)""
     return render(request, 'clientes.html',{'clientes':clientes})
 @login_required
+@admin_only
 #crear clientes
 def create_clientes(request):
     if request.method == 'GET':
@@ -60,6 +62,7 @@ def create_clientes(request):
 #            })
 
 @login_required
+@admin_only
 def cliente_detail(request, cliente_id):
     cliente = get_object_or_404(Cliente, pk=cliente_id)
 
@@ -81,6 +84,7 @@ def cliente_detail(request, cliente_id):
 
 
 @login_required
+@admin_only
 #eliminar clientes
 def cliente_delete(request, cliente_id):
     cliente=get_object_or_404(Cliente, pk=cliente_id)

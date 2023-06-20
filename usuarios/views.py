@@ -7,10 +7,12 @@ from django.db import IntegrityError
 from django.contrib.auth.models import User
 from .forms import ExtendedUserCreationForm
 from django.contrib.auth.forms import UserChangeForm
+from appclientes.decorators import admin_only
 
 # Create your views here.
 
 @login_required
+@admin_only
 #listar usuarios
 def usuarios(request):
     queryset = request.GET.get("buscar")
@@ -27,6 +29,7 @@ def usuarios(request):
 
 
 @login_required
+@admin_only
 #editar usuario
 def usuario_detail(request, usuario_id):
     usuario = get_object_or_404(User, pk=usuario_id)
@@ -41,6 +44,7 @@ def usuario_detail(request, usuario_id):
         return render(request, 'usuario-detail.html', {'usuario': usuario, 'form': form, 'error': 'Error al editar usuario'})
 
 @login_required
+@admin_only
 #desactivar usuario
 def desactivar_usuario(request, usuario_id):
     usuario = get_object_or_404(User, pk=usuario_id)
@@ -56,6 +60,7 @@ def desactivar_usuario(request, usuario_id):
     
     return redirect('usuarios')
 @login_required
+@admin_only
 #activar usuario
 def activar_usuario(request, usuario_id):
     usuario = get_object_or_404(User, pk=usuario_id)
@@ -65,6 +70,7 @@ def activar_usuario(request, usuario_id):
 
 
 @login_required
+@admin_only
 #eliminar usuario
 def usuario_delete(request, usuario_id):
     usuario = get_object_or_404(User, pk=usuario_id)
@@ -74,6 +80,7 @@ def usuario_delete(request, usuario_id):
     return redirect('usuarios')
 
 @login_required
+@admin_only
 #registrar_usuarios
 def registrar_usuarios(request):
     if request.method == 'GET':
@@ -89,6 +96,8 @@ def registrar_usuarios(request):
                     first_name=form.cleaned_data['first_name'],
                     last_name=form.cleaned_data['last_name']
                 )
+                if 'is_admin' in request.POST and request.POST['is_admin'] == 'on':
+                    user.is_staff = True  # Asignar el rol de administrador al usuario
                 user.save()
                 return redirect('usuarios')
             except IntegrityError:
@@ -100,3 +109,7 @@ def registrar_usuarios(request):
             'form': form,
             'error': 'Las contraseñas no coinciden'
         })
+
+from django.contrib.auth.models import User
+
+

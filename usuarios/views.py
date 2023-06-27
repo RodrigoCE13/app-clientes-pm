@@ -16,16 +16,17 @@ from appclientes.decorators import admin_only
 #listar usuarios
 def usuarios(request):
     queryset = request.GET.get("buscar")
-    print(queryset)
-    usuarios = Usuario.objects.filter(estado=True)
+    usuarios = User.objects.filter(is_active=True)
+    
     if queryset:
-        usuarios=User.objects.filter(
-            Q(nombre__icontains= queryset)|
-            Q(apellido__icontains=queryset)
-        ).distinct()   
-    usuarios=User.objects.all()#en caso de quere mostrar solo los datos del usuario logeado ""Cliente.objects.filter(user=request.user)""
-    usuarios = User.objects.exclude(username='admin')
-    return render(request, 'usuarios.html',{'usuarios':usuarios})
+        usuarios = usuarios.filter(
+            Q(first_name__icontains=queryset) |
+            Q(email__icontains=queryset)
+        ).distinct()
+    
+    usuarios = usuarios.exclude(username='admin')
+    
+    return render(request, 'usuarios.html', {'usuarios': usuarios})
 
 
 @login_required

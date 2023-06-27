@@ -13,18 +13,20 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
-          <a class="navbar-brand" href="#">AppClientes</a>
+          <a class="navbar-brand" href="#">
+            <img src="https://www.pyme-manager.cl/wp-content/uploads/2022/07/Mesa-de-trabajo-1-copia-copy-copia.webp" alt="" style="width: 12%;">
+          </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
                 {% if user.is_authenticated %}
-                <li class="nav-item">
+                <li class="nav-item me-3">
                   <a class="nav-link" href="/home">Home</a>
                 </li>
                 {% if user.is_superuser or user.is_staff %}
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown me-3">
                   <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Usuarios
                   </a>
@@ -34,7 +36,7 @@
                   </ul>
                 </li>
                 {% endif %}
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown me-3">
                   <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Clientes
                   </a>
@@ -46,11 +48,7 @@
                   </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/logout">Cerrar sesion</a>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="/signin">Iniciar sesion</a>
+                    <a class=" btn btn-outline-light" href="/logout"><i class="bi bi-box-arrow-right"></i></a>
                 </li>
                 {% endif %}
                 </ul>

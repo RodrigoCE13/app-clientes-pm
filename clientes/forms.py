@@ -8,16 +8,21 @@ class ClienteForm(forms.ModelForm):
         ('santander', 'Banco Santander'),
         ('chile', 'Banco de Chile'),
         ('bci', 'Banca BCI'),
+        ('otro', 'Otro banco')
     )
     regimens=(
         ('', 'Seleccione un tipo de regimen'),
-        ('proPymeGenereal', 'Pro Pyme General 14A'),
-        ('semiIntegrado', 'Semi integrado 14A'),
+        ('Atribuida 14A', 'Atribuida 14A'),
+        ('Pro Pyme General 14D', 'Pro Pyme General 14D'),
+        ('Semi integrado 14A', 'Semi integrado 14A'),
+        ('Renta presunta', 'Renta presunta'),
         ('otro', 'Otro tipo de regimen')
     )
     tiposCuenta=(
         ('', 'Seleccione un tipo de cuenta'),
         ('vista', 'Cuenta Vista'),
+        ('Rut', 'Cuenta Rut'),
+        ('Corriente', 'Cuenta Corriente'),
         ('otro', 'Otro tipo de cuenta'),
     )
     banco = forms.ChoiceField(choices=bancos, widget=forms.Select(attrs={'class': 'form-select shadow-sm'}), required=False)

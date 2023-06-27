@@ -24,7 +24,7 @@ def usuarios(request):
             Q(email__icontains=queryset)
         ).distinct()
     
-    usuarios = usuarios.exclude(username='admin')
+    usuarios = usuarios.exclude(username='pmadmin')&usuarios.exclude(username='admin')
     
     return render(request, 'usuarios.html', {'usuarios': usuarios})
 

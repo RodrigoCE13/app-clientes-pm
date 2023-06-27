@@ -21,6 +21,7 @@ from clientes import views as clientes_views
 from core import views as core_views
 from usuarios import views as usuarios_views
 from .decorators import admin_only
+#
 
 urlpatterns = [
     path('',lambda request: redirect('signin'), name='root'),
